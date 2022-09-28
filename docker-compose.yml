@@ -1,0 +1,24 @@
+version: '3'
+services:
+  client:
+    restart: always
+    image: shazid98/mongo-client
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app
+  api:
+    restart: always
+    image: shazid98/mongo-api
+    ports:
+      - 3000:3000
+    volumes:
+      - ./server:/app
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+volumes:
+ mongodb:
