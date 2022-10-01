@@ -2,20 +2,41 @@ version: '3'
 services:
   client:
     restart: always
-    image: shazid98/mongo-client
+    build:
+      dockerfile: Dockerfile
+      context: ./client
     ports:
       - 8000:8000
     volumes:
-      - ./:/app
+      - ./client:/app
+    depends_on:
+      - api
   api:
     restart: always
-    image: shazid98/mongo-api
+    build:
+      dockerfile: Dockerfile
+      context: ./server
     ports:
       - 3000:3000
     volumes:
       - ./server:/app
-  mongo:
+    depends_on:
+      - db
+    links:
+      - db
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '3050:80'
+  db:
     image: mongo
+    restart: unless-stopped
     ports:
       - 27017:27017
     volumes:

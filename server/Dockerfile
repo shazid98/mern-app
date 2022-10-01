@@ -3,4 +3,5 @@ WORKDIR /app
 COPY ./package.json ./
 RUN npm i
 COPY . .
-CMD ["nodemon", "index.js"]
+EXPOSE 3000:3000
+CMD ["node", "index.js"]
