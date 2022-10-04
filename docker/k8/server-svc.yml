@@ -5,11 +5,7 @@ metadata:
   namespace: default
 spec: 
   ports:
-    - nodePort: 30000 # - 30000-302222
-      port: 8000
-      protocol: TCP
-      targetPort: 8000
-
+    - port: 3000
+      targetPort: 3000
   selector:
     app: api
-  type: NodePort

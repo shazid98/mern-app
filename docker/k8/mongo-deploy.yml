@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: mongodb
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,9 +15,9 @@ spec:
       containers:
         - name: mongodb
           image: mongo:latest
-
+          imagePullPolicy: Always
           ports:
             - containerPort: 27017
 
 
-          imagePullPolicy: Always
+          
