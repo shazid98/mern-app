@@ -1,5 +1,3 @@
-You can't run multiple instances of mongo can't be scalled in cluster that's why these services are managed outside kubernetes cluster.
-
 # first run mongo deployment using following command. 
 
 kubectl apply -f .\mongo-deploy.yml
