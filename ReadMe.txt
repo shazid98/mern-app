@@ -1,4 +1,4 @@
-# first run mongo deployment using following command. 
+#first run mongo deployment using following command. 
 
 kubectl apply -f .\mongo-deploy.yml
 
